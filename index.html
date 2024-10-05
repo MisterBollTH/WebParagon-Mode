@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>หน้าแรก</title>
+    <style>
+        body {
+            font-family: 'Mitr', sans-serif;
+            background-color: #1e1e1e;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+        }
+
+        .sidebar {
+            background-color: #2c2c2c;
+            width: 200px;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .sidebar a {
+            display: block;
+            color: #ffffff;
+            padding: 10px;
+            text-decoration: none;
+            border-bottom: 1px solid #444;
+        }
+
+        .sidebar a:hover {
+            background-color: #00ff99;
+            color: #000;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background-color: #2c2c2c;
+            border-radius: 10px;
+            padding: 30px;
+            width: 400px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- แทบเลือก -->
+    <div class="sidebar">
+        <a href="index.html">หน้าแรก</a>
+        <a href="calculate.html">คำนวณเพชร AFK</a>
+        <a href="team.html">คำนวณเพชร Paragon Mode</a>
+        <a href="#">About</a>
+    </div>
+
+    <!-- ส่วนเนื้อหา -->
+    <div class="main-content">
+        <div class="container">
+            <h1>ยินดีต้อนรับสู่ Anime Vanguards</h1>
+            <p>เลือกฟังก์ชันจากแทบด้านซ้ายเพื่อเริ่มต้นการใช้งาน</p>
+        </div>
+    </div>
+
+</body>
+</html>
