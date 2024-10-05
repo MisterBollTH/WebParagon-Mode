@@ -7,6 +7,119 @@
     <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <title>คำนวณเพชรและเวลาในด่าน</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500&display=swap');
+
+        body {
+            font-family: 'Mitr', sans-serif;
+            background-color: #1e1e1e;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+        }
+
+        /* เพิ่มแทบเลือก */
+        .sidebar {
+            background-color: #2c2c2c;
+            width: 200px;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .sidebar a {
+            display: block;
+            color: #ffffff;
+            padding: 10px;
+            text-decoration: none;
+            border-bottom: 1px solid #444;
+        }
+
+        .sidebar a:hover {
+            background-color: #00ff99;
+            color: #000;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background-color: #2c2c2c;
+            border-radius: 10px;
+            padding: 30px;
+            width: 400px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #00ff99;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3d3d3d;
+            color: #ffffff;
+            font-size: 16px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px;
+            background-color: #00ff99;
+            border: none;
+            border-radius: 5px;
+            color: #000;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #00e68a;
+        }
+
+        .reset-button {
+            background-color: #ff4d4d;
+            color: #fff;
+        }
+
+        .reset-button:hover {
+            background-color: #e60000;
+        }
+
+        .result {
+            margin-top: 20px;
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            color: #00ff99;
+            font-size: 16px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
 </head>
 <body>
 
