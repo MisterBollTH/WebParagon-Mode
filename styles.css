@@ -20,7 +20,7 @@ body {
     left: -250px;
     top: 0;
     height: 100%;
-    transition: all 0.5s ease;
+    transition: all 0.4s ease;
     z-index: 1000;
 }
 
@@ -49,11 +49,11 @@ body {
     justify-content: center;
     align-items: center;
     padding: 20px;
-    margin-left: 250px;
-    transition: margin-left 0.5s ease;
+    margin-left: 0;
+    transition: margin-left 0.4s ease;
 }
 
-.sidebar.active + .main-content {
+.main-content.sidebar-open {
     margin-left: 250px;
 }
 
@@ -77,6 +77,7 @@ body {
     justify-content: space-between;
     cursor: pointer;
     z-index: 1001;
+    transition: left 0.4s ease;
 }
 
 .toggle-btn span {
@@ -87,16 +88,16 @@ body {
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-.sidebar.active ~ .toggle-btn span:nth-child(1) {
+.toggle-btn.active span:nth-child(1) {
     transform: rotate(45deg) translate(7px, 7px);
     background-color: #00ff99;
 }
 
-.sidebar.active ~ .toggle-btn span:nth-child(2) {
+.toggle-btn.active span:nth-child(2) {
     opacity: 0;
 }
 
-.sidebar.active ~ .toggle-btn span:nth-child(3) {
+.toggle-btn.active span:nth-child(3) {
     transform: rotate(-45deg) translate(7px, -7px);
     background-color: #00ff99;
 }
@@ -111,14 +112,12 @@ body {
         left: 0;
     }
 
-    .main-content {
+    .main-content.sidebar-open {
         margin-left: 0;
-        padding: 10px;
     }
 
-    .container {
-        width: 90%;
-        padding: 20px;
+    .toggle-btn {
+        left: 15px;
     }
 }
 
