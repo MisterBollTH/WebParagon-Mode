@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="icon" href="./gem.png">
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <title>คำนวณเพชรในด่าน Paragon Mode</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500&display=swap');
@@ -121,13 +123,19 @@
 </head>
 <body>
 
-    <!-- แทบเลือก -->
-    <div class="sidebar">
+   <!-- ปุ่มสำหรับแสดง/ซ่อน Sidebar -->
+    <div class="toggle-btn" id="toggle-btn" onclick="toggleSidebar()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
         <a href="index.html">หน้าแรก</a>
         <a href="calculate.html">คำนวณเพชร AFK</a>
         <a href="paragon.html">คำนวณเพชร Paragon Mode</a>
         <a href="#">About</a>
-    </div>
 
     <!-- ส่วนเนื้อหา -->
     <div class="main-content">
