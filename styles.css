@@ -8,30 +8,34 @@ body {
     display: flex;
     height: 100vh;
     flex-direction: column;
+    overflow-x: hidden;
 }
 
 .sidebar {
     background-color: #2c2c2c;
-    width: 200px;
+    width: 250px;
     padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.7);
     position: fixed;
-    left: -200px; /* ซ่อน Sidebar */
+    left: -250px;
     top: 0;
     height: 100%;
-    transition: left 0.3s ease;
+    transition: all 0.5s ease;
+    z-index: 1000;
 }
 
 .sidebar.active {
-    left: 0; /* แสดง Sidebar เมื่อคลาส active ถูกเพิ่ม */
+    left: 0;
 }
 
 .sidebar a {
     display: block;
     color: #ffffff;
-    padding: 10px;
+    padding: 15px 20px;
     text-decoration: none;
     border-bottom: 1px solid #444;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 1.1rem;
 }
 
 .sidebar a:hover {
@@ -45,41 +49,62 @@ body {
     justify-content: center;
     align-items: center;
     padding: 20px;
-    margin-left: 200px; /* ให้ main-content ห่างจาก sidebar */
-    transition: margin-left 0.3s ease;
+    margin-left: 250px;
+    transition: margin-left 0.5s ease;
 }
 
 .sidebar.active + .main-content {
-    margin-left: 200px;
+    margin-left: 250px;
 }
 
 .container {
     background-color: #2c2c2c;
-    border-radius: 10px;
-    padding: 30px;
+    border-radius: 12px;
+    padding: 40px;
     width: 80%;
     max-width: 600px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
-/* ปุ่ม Toggle สำหรับแสดง/ซ่อน Sidebar */
 .toggle-btn {
     position: fixed;
-    left: 10px;
-    top: 10px;
-    background-color: #00ff99;
-    border: none;
-    padding: 10px;
+    left: 20px;
+    top: 20px;
+    width: 40px;
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     cursor: pointer;
-    font-size: 20px;
-    z-index: 1000;
+    z-index: 1001;
+}
+
+.toggle-btn span {
+    width: 100%;
+    height: 4px;
+    background-color: #ffffff;
+    border-radius: 2px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.sidebar.active ~ .toggle-btn span:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+    background-color: #00ff99;
+}
+
+.sidebar.active ~ .toggle-btn span:nth-child(2) {
+    opacity: 0;
+}
+
+.sidebar.active ~ .toggle-btn span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+    background-color: #00ff99;
 }
 
 @media (max-width: 768px) {
     .sidebar {
-        width: 100%;
-        height: auto;
-        left: -100%;
+        width: 200px;
+        left: -200px;
     }
 
     .sidebar.active {
@@ -99,8 +124,8 @@ body {
 
 @media (max-width: 480px) {
     .sidebar {
-        width: 100%;
-        padding: 5px;
+        width: 180px;
+        left: -180px;
     }
 
     .container {
