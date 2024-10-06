@@ -35,25 +35,22 @@
     </div>
 
     <!-- JavaScript สำหรับควบคุม Sidebar -->
-    <script>
- // script.js
+  <script>
+        const toggleBtn = document.getElementById('toggle-btn');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
 
-document.addEventListener('DOMContentLoaded', function() {
-    const toggleBtn = document.querySelector('.toggle-btn');
-    const sidebar = document.querySelector('.sidebar');
-    const mainContent = document.querySelector('.main-content');
+        toggleBtn.addEventListener('click', () => {
+            toggleBtn.classList.toggle('active');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
 
-    toggleBtn.addEventListener('click', function() {
-        sidebar.classList.toggle('active'); // เปลี่ยนคลาส active ของ Sidebar
-        toggleBtn.classList.toggle('active'); // เปลี่ยนคลาส active ของปุ่ม Toggle
-        if (sidebar.classList.contains('active')) {
-            mainContent.style.marginLeft = '250px'; // เลื่อนเนื้อหา
-        } else {
-            mainContent.style.marginLeft = '0'; // คืนค่าเนื้อหา
-        }
-    });
-});
-
+        overlay.addEventListener('click', () => {
+            toggleBtn.classList.remove('active');
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
     </script>
 
 </body>
