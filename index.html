@@ -36,14 +36,22 @@
 
     <!-- JavaScript สำหรับควบคุม Sidebar -->
     <script>
-        const sidebar = document.querySelector('.sidebar');
-const toggleBtn = document.querySelector('.toggle-btn');
-const mainContent = document.querySelector('.main-content');
+ // script.js
 
-toggleBtn.addEventListener('click', () => {
-    sidebar.classList.toggle('active'); // เปิด/ปิด Sidebar
-    toggleBtn.classList.toggle('active'); // เปลี่ยนรูปแบบปุ่ม Toggle
-    mainContent.classList.toggle('active'); // ปรับ margin ของเนื้อหา
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleBtn = document.querySelector('.toggle-btn');
+    const sidebar = document.querySelector('.sidebar');
+    const mainContent = document.querySelector('.main-content');
+
+    toggleBtn.addEventListener('click', function() {
+        sidebar.classList.toggle('active'); // เปลี่ยนคลาส active ของ Sidebar
+        toggleBtn.classList.toggle('active'); // เปลี่ยนคลาส active ของปุ่ม Toggle
+        if (sidebar.classList.contains('active')) {
+            mainContent.style.marginLeft = '250px'; // เลื่อนเนื้อหา
+        } else {
+            mainContent.style.marginLeft = '0'; // คืนค่าเนื้อหา
+        }
+    });
 });
 
     </script>
