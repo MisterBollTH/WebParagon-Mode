@@ -20,16 +20,17 @@ body {
     padding: 20px;
     box-shadow: 2px 0 15px rgba(0, 0, 0, 0.5);
     position: fixed;
-    left: -250px; /* ซ่อน Sidebar เริ่มต้น */
     top: 0;
+    left: 0;
     height: 100%;
-    transition: all 0.4s ease;
+    transform: translateX(-100%); /* ซ่อน Sidebar เริ่มต้น */
+    transition: transform 0.4s ease; /* เพิ่ม Animation */
     z-index: 1000;
     border-right: 2px solid #00ff99; /* เพิ่มขอบขวาสีเขียว */
 }
 
 .sidebar.active {
-    left: 0; /* แสดง Sidebar เมื่อมีคลาส active */
+    transform: translateX(0); /* แสดง Sidebar เมื่อมีคลาส active */
 }
 
 .sidebar a {
@@ -64,7 +65,6 @@ body {
 }
 
 .toggle-btn.active {
-    position: fixed;
     left: 270px; /* เลื่อนปุ่ม Toggle เมื่อ Sidebar เปิด */
 }
 
@@ -274,15 +274,12 @@ body {
     left: 0;
     height: 100%;
     overflow-y: auto;
-    transition: transform 0.3s ease;
+    transform: translateX(-100%); /* ซ่อน Sidebar */
+    transition: transform 0.3s ease; /* Animation สำหรับ Sidebar */
 }
 
-.sidebar a {
-    display: block;
-    color: #ffffff;
-    padding: 10px;
-    text-decoration: none;
-    border-bottom: 1px solid #444;
+.sidebar.active {
+    transform: translateX(0); /* แสดง Sidebar */
 }
 
 /* เนื้อหาหลัก */
