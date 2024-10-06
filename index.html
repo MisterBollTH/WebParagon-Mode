@@ -36,15 +36,16 @@
 
     <!-- JavaScript สำหรับควบคุม Sidebar -->
     <script>
-        function toggleSidebar() {
-            var sidebar = document.getElementById("sidebar");
-            var toggleBtn = document.getElementById("toggle-btn");
-            var mainContent = document.getElementById("main-content");
+        const sidebar = document.querySelector('.sidebar');
+const toggleBtn = document.querySelector('.toggle-btn');
+const mainContent = document.querySelector('.main-content');
 
-            sidebar.classList.toggle("active");
-            toggleBtn.classList.toggle("active");
-            mainContent.classList.toggle("sidebar-open");
-        }
+toggleBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('active'); // เปิด/ปิด Sidebar
+    toggleBtn.classList.toggle('active'); // เปลี่ยนรูปแบบปุ่ม Toggle
+    mainContent.classList.toggle('active'); // ปรับ margin ของเนื้อหา
+});
+
     </script>
 
 </body>
