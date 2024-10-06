@@ -148,10 +148,15 @@ body {
     }
 }
 
+/* ปรับการแสดงผลแนวตั้งมือถือ */
 @media (max-width: 480px) {
     .sidebar {
         width: 180px;
         left: -180px;
+    }
+
+    .sidebar.active {
+        left: 0;
     }
 
     .container {
@@ -176,63 +181,73 @@ body {
     .toggle-btn.active {
         left: 195px;
     }
+
+    .main-content {
+        margin-top: 60px; /* เพิ่มพื้นที่ด้านบนสำหรับปุ่ม Toggle */
+        margin-left: 0;
+    }
+
+    /* ปรับปุ่ม Toggle ให้เลื่อนออกจากหน้าจอเมื่อ Sidebar ถูกซ่อน */
+    .toggle-btn {
+        left: 20px;
+        top: 20px;
+    }
+    
      label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
 
-        input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: none;
-            border-radius: 5px;
-            background-color: #3d3d3d;
-            color: #ffffff;
-            font-size: 16px;
-        }
+    input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #3d3d3d;
+        color: #ffffff;
+        font-size: 16px;
+    }
 
-        .button-group {
-            display: flex;
-            gap: 10px;
-        }
+    .button-group {
+        display: flex;
+        gap: 10px;
+    }
 
-        button {
-            flex: 1;
-            padding: 12px;
-            background-color: #00ff99;
-            border: none;
-            border-radius: 5px;
-            color: #000;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+    button {
+        flex: 1;
+        padding: 12px;
+        background-color: #00ff99;
+        border: none;
+        border-radius: 5px;
+        color: #000;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
 
-        button:hover {
-            background-color: #00e68a;
-        }
+    button:hover {
+        background-color: #00e68a;
+    }
 
-        .reset-button {
-            background-color: #ff4d4d;
-            color: #fff;
-        }
+    .reset-button {
+        background-color: #ff4d4d;
+        color: #fff;
+    }
 
-        .reset-button:hover {
-            background-color: #e60000;
-        }
+    .reset-button:hover {
+        background-color: #e60000;
+    }
 
-        .result {
-            margin-top: 20px;
-            background-color: #1e1e1e;
-            padding: 20px;
-            border-radius: 10px;
-            color: #00ff99;
-            font-size: 16px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
-}
-
+    .result {
+        margin-top: 20px;
+        background-color: #1e1e1e;
+        padding: 20px;
+        border-radius: 10px;
+        color: #00ff99;
+        font-size: 16px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
 }
