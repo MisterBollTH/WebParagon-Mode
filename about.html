@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เกี่ยวกับเรา</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- ปุ่ม Toggle -->
+    <div class="toggle-btn" id="toggle-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <a href="index.html">หน้าแรก</a>
+        <a href="about.html" class="active">เกี่ยวกับเรา</a>
+        <a href="services.html">บริการ</a>
+        <a href="contact.html">ติดต่อ</a>
+    </nav>
+
+    <!-- เนื้อหาหลัก -->
+    <div class="main-content">
+        <div class="container">
+            <h1>เกี่ยวกับเรา</h1>
+            <p>ยินดีต้อนรับสู่หน้าเกี่ยวกับเรา! เราคือบริษัทที่มุ่งมั่นในการให้บริการที่ดีที่สุดแก่ลูกค้าของเรา ด้วยประสบการณ์และความเชี่ยวชาญในสาขาต่าง ๆ เรามุ่งหวังที่จะสร้างความพึงพอใจและความไว้วางใจให้กับทุกท่าน</p>
+            
+            <div class="paragon-container">
+                <h2>วิสัยทัศน์ของเรา</h2>
+                <p>เรามุ่งมั่นที่จะเป็นผู้นำในอุตสาหกรรม ด้วยนวัตกรรมและการพัฒนาที่ต่อเนื่อง เพื่อสร้างคุณค่าและความยั่งยืนให้กับลูกค้าและสังคม</p>
+            </div>
+
+            <div class="calculation-container">
+                <h2>ทีมงานของเรา</h2>
+                <p>ทีมงานของเราประกอบด้วยผู้เชี่ยวชาญที่มีความสามารถและประสบการณ์ในหลากหลายสาขา เราให้ความสำคัญกับการทำงานเป็นทีมและการพัฒนาทักษะอย่างต่อเนื่อง</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- สคริปต์สำหรับการ Toggle Sidebar -->
+    <script>
+        const toggleBtn = document.getElementById('toggle-btn');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        toggleBtn.addEventListener('click', () => {
+            toggleBtn.classList.toggle('active');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
+
+        overlay.addEventListener('click', () => {
+            toggleBtn.classList.remove('active');
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+    </script>
+</body>
+</html>
