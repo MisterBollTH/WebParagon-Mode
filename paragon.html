@@ -3,116 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="icon" href="./gem.png">
+    <link rel="icon" href="./gem.png">
     <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <title>คำนวณเพชรในด่าน Paragon Mode</title>
-    <style>
-        
-        /* เพิ่มแทบเลือก */
-        .sidebar {
-            background-color: #2c2c2c;
-            width: 200px;
-            padding: 20px;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
-        }
-
-        .sidebar a {
-            display: block;
-            color: #ffffff;
-            padding: 10px;
-            text-decoration: none;
-            border-bottom: 1px solid #444;
-        }
-
-        .sidebar a:hover {
-            background-color: #00ff99;
-            color: #000;
-        }
-       
-        .main-content {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .container {
-            background-color: #2c2c2c;
-            border-radius: 10px;
-            padding: 30px;
-            width: 400px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        h1 {
-            text-align: center;
-            color: #00ff99;
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: none;
-            border-radius: 5px;
-            background-color: #3d3d3d;
-            color: #ffffff;
-            font-size: 16px;
-        }
-
-        .button-group {
-            display: flex;
-            gap: 10px;
-        }
-
-        button {
-            flex: 1;
-            padding: 12px;
-            background-color: #00ff99;
-            border: none;
-            border-radius: 5px;
-            color: #000;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        button:hover {
-            background-color: #00e68a;
-        }
-
-        .reset-button {
-            background-color: #ff4d4d;
-            color: #fff;
-        }
-
-        .reset-button:hover {
-            background-color: #e60000;
-        }
-
-        .result {
-            margin-top: 20px;
-            background-color: #1e1e1e;
-            padding: 20px;
-            border-radius: 10px;
-            color: #00ff99;
-            font-size: 16px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
-    </style>
 </head>
 <body>
 
-  <!-- ปุ่มสำหรับแสดง/ซ่อน Sidebar -->
+    <!-- ปุ่มสำหรับแสดง/ซ่อน Sidebar -->
     <div class="toggle-btn" id="toggle-btn" onclick="toggleSidebar()">
         <span></span>
         <span></span>
@@ -126,70 +24,36 @@
         <a href="paragon.html">คำนวณเพชร Paragon Mode</a>
         <a href="#">About</a>
     </div>
-    <div class="main-content">
-    <div class="container">
-        <h1>คำนวณเพชรใน Paragon Mode</h1>
-        <p>#นี่ยังอยู่ในการทดสอบ</p>
 
-        <label for="currentStage">ด่านปัจจุบัน:</label>
-        <input type="number" id="currentStage" value="1" min="1">
+    <!-- เนื้อหา -->
+    <div class="main-content" id="main-content">
+        <div class="container paragon-container">
+            <h1>คำนวณเพชรใน Paragon Mode</h1>
+            <p>#นี่ยังอยู่ในการทดสอบ</p>
 
-        <label for="currentDiamonds">เพชรในด่านปัจจุบัน:</label>
-        <input type="number" id="currentDiamonds" value="0" min="0">
+            <label for="currentStage">ด่านปัจจุบัน:</label>
+            <input type="number" id="currentStage" value="1" min="1">
 
-        <label for="minutes">เวลาต่อด่าน (นาที):</label>
-        <input type="number" id="minutes" value="0" min="0">
+            <label for="currentDiamonds">เพชรในด่านปัจจุบัน:</label>
+            <input type="number" id="currentDiamonds" value="0" min="0">
 
-        <label for="farmHours">จำนวนชั่วโมงที่ต้องการฟาร์ม:</label>
-        <input type="number" id="farmHours" value="0" min="0">
+            <label for="minutes">เวลาต่อด่าน (นาที):</label>
+            <input type="number" id="minutes" value="0" min="0">
 
-        <div class="button-group">
-            <button onclick="calculate()">คำนวณ</button>
-            <button class="reset-button" onclick="resetForm()">รีเซ็ต</button>
+            <label for="farmHours">จำนวนชั่วโมงที่ต้องการฟาร์ม:</label>
+            <input type="number" id="farmHours" value="0" min="0">
+
+            <div class="button-group">
+                <button onclick="calculate()">คำนวณ</button>
+                <button class="reset-button" onclick="resetForm()">รีเซ็ต</button>
+            </div>
+
+            <div class="result" id="result"></div>
         </div>
-
-        <div class="result" id="result"></div>
     </div>
 
+    <!-- JavaScript สำหรับควบคุม Sidebar และการคำนวณ -->
     <script>
-        function calculate() {
-    let currentStage = parseInt(document.getElementById("currentStage").value);
-    let currentDiamonds = parseInt(document.getElementById("currentDiamonds").value);
-    let minutesPerStage = parseInt(document.getElementById("minutes").value);
-    let farmHours = parseInt(document.getElementById("farmHours").value);
-
-    if (isNaN(currentStage) || currentStage < 1 || isNaN(currentDiamonds) || isNaN(minutesPerStage) || minutesPerStage <= 0 || isNaN(farmHours) || farmHours < 0) {
-        alert("กรุณาใส่ข้อมูลให้ถูกต้อง");
-        return;
-    }
-
-    // คำนวณเพชรโดยใช้สูตร currentDiamonds + (12 * currentStage)
-    let diamondsPerStage = currentDiamonds + (12 * currentStage);
-
-    let totalFarmMinutes = farmHours * 60;
-    let totalStagesPassed = Math.floor(totalFarmMinutes / minutesPerStage);
-    let finalStageReached = currentStage + totalStagesPassed - 1;
-    let totalDiamonds = totalStagesPassed * diamondsPerStage;
-    let totalMinutes = totalStagesPassed * minutesPerStage;
-
-    let totalHoursUsed = Math.floor(totalMinutes / 60);
-    let remainingMinutesUsed = totalMinutes % 60;
-
-    let resultDiv = document.getElementById("result");
-    resultDiv.innerHTML = `<h3>ฟาร์มเสร็จใน ${farmHours} ชั่วโมง</h3>`;
-    resultDiv.innerHTML += `<p>เริ่มจากด่าน: ${currentStage}</p>`;
-    resultDiv.innerHTML += `<p>ถึงด่านสุดท้าย: ${finalStageReached}</p>`;
-    resultDiv.innerHTML += `<p>เพชรรวมที่ได้รับ: ${totalDiamonds}</p>`;
-    resultDiv.innerHTML += `<p>เวลาที่ใช้: ${totalHoursUsed} ชั่วโมง ${remainingMinutesUsed} นาที</p>`;
-}   
-
-function resetForm() {
-    document.getElementById("currentStage").value = 1;
-    document.getElementById("currentDiamonds").value = 0;
-    document.getElementById("minutes").value = 0;
-    document.getElementById("farmHours").value = 0;
-    document.getElementById("result").innerHTML = "";
-}
         function toggleSidebar() {
             var sidebar = document.getElementById("sidebar");
             var toggleBtn = document.getElementById("toggle-btn");
@@ -199,8 +63,45 @@ function resetForm() {
             toggleBtn.classList.toggle("active");
             mainContent.classList.toggle("sidebar-open");
         }
-   
 
+        function calculate() {
+            let currentStage = parseInt(document.getElementById("currentStage").value);
+            let currentDiamonds = parseInt(document.getElementById("currentDiamonds").value);
+            let minutesPerStage = parseInt(document.getElementById("minutes").value);
+            let farmHours = parseInt(document.getElementById("farmHours").value);
+
+            if (isNaN(currentStage) || currentStage < 1 || isNaN(currentDiamonds) || isNaN(minutesPerStage) || minutesPerStage <= 0 || isNaN(farmHours) || farmHours < 0) {
+                alert("กรุณาใส่ข้อมูลให้ถูกต้อง");
+                return;
+            }
+
+            // คำนวณเพชรโดยใช้สูตร currentDiamonds + (12 * currentStage)
+            let diamondsPerStage = currentDiamonds + (12 * currentStage);
+
+            let totalFarmMinutes = farmHours * 60;
+            let totalStagesPassed = Math.floor(totalFarmMinutes / minutesPerStage);
+            let finalStageReached = currentStage + totalStagesPassed - 1;
+            let totalDiamonds = totalStagesPassed * diamondsPerStage;
+            let totalMinutes = totalStagesPassed * minutesPerStage;
+
+            let totalHoursUsed = Math.floor(totalMinutes / 60);
+            let remainingMinutesUsed = totalMinutes % 60;
+
+            let resultDiv = document.getElementById("result");
+            resultDiv.innerHTML = `<h3>ฟาร์มเสร็จใน ${farmHours} ชั่วโมง</h3>`;
+            resultDiv.innerHTML += `<p>เริ่มจากด่าน: ${currentStage}</p>`;
+            resultDiv.innerHTML += `<p>ถึงด่านสุดท้าย: ${finalStageReached}</p>`;
+            resultDiv.innerHTML += `<p>เพชรรวมที่ได้รับ: ${totalDiamonds}</p>`;
+            resultDiv.innerHTML += `<p>เวลาที่ใช้: ${totalHoursUsed} ชั่วโมง ${remainingMinutesUsed} นาที</p>`;
+        }   
+
+        function resetForm() {
+            document.getElementById("currentStage").value = 1;
+            document.getElementById("currentDiamonds").value = 0;
+            document.getElementById("minutes").value = 0;
+            document.getElementById("farmHours").value = 0;
+            document.getElementById("result").innerHTML = "";
+        }
     </script>
 
 </body>
