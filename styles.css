@@ -271,6 +271,6 @@ a {
 }
 
 a:hover {
-    background-color: #2980b9; /* สีพื้นหลังเมื่อ hover */
+    background-color: #339900; /* สีพื้นหลังเมื่อ hover */
     color: #66FF00; /* สีตัวอักษรเมื่อ hover */
 }
