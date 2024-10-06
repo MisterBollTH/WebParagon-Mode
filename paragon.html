@@ -176,11 +176,11 @@
     let remainingMinutesUsed = totalMinutes % 60;
 
     let resultDiv = document.getElementById("result");
-    resultDiv.innerHTML = <h3>ฟาร์มเสร็จใน ${farmHours} ชั่วโมง</h3>;
-    resultDiv.innerHTML += <p>เริ่มจากด่าน: ${currentStage}</p>;
-    resultDiv.innerHTML += <p>ถึงด่านสุดท้าย: ${finalStageReached}</p>;
-    resultDiv.innerHTML += <p>เพชรรวมที่ได้รับ: ${totalDiamonds}</p>;
-    resultDiv.innerHTML += <p>เวลาที่ใช้: ${totalHoursUsed} ชั่วโมง ${remainingMinutesUsed} นาที</p>;
+    resultDiv.innerHTML = `<h3>ฟาร์มเสร็จใน ${farmHours} ชั่วโมง</h3>`;
+    resultDiv.innerHTML += `<p>เริ่มจากด่าน: ${currentStage}</p>`;
+    resultDiv.innerHTML += `<p>ถึงด่านสุดท้าย: ${finalStageReached}</p>`;
+    resultDiv.innerHTML += `<p>เพชรรวมที่ได้รับ: ${totalDiamonds}</p>`;
+    resultDiv.innerHTML += `<p>เวลาที่ใช้: ${totalHoursUsed} ชั่วโมง ${remainingMinutesUsed} นาที</p>`;
 }   
 
 function resetForm() {
