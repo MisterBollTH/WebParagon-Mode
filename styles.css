@@ -27,12 +27,16 @@ body {
     transition: transform 0.4s ease; /* เพิ่ม Animation */
     z-index: 1000;
     border-right: 2px solid #00ff99; /* เพิ่มขอบขวาสีเขียว */
+    display: flex;
+    flex-direction: column;
 }
 
+/* แสดง Sidebar เมื่อมีคลาส active */
 .sidebar.active {
-    transform: translateX(0); /* แสดง Sidebar เมื่อมีคลาส active */
+    transform: translateX(0);
 }
 
+/* ลิงก์ใน Sidebar */
 .sidebar a {
     display: block;
     color: #ffffff;
@@ -60,12 +64,13 @@ body {
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
-    z-index: 1001;
-    transition: left 0.4s ease;
+    z-index: 1100; /* อยู่เหนือ Sidebar และ Overlay */
+    transition: transform 0.4s ease;
 }
 
 .toggle-btn.active {
-    left: 270px; /* เลื่อนปุ่ม Toggle เมื่อ Sidebar เปิด */
+    /* ไม่เลื่อนปุ่ม toggle ทางด้านขวา แต่หมุนแทน */
+    transform: rotate(90deg);
 }
 
 .toggle-btn span {
@@ -77,7 +82,7 @@ body {
 }
 
 .toggle-btn.active span:nth-child(1) {
-    transform: rotate(45deg) translate(7px, 7px);
+    transform: rotate(45deg) translate(5px, 5px);
     background-color: #00ff99;
 }
 
@@ -86,8 +91,27 @@ body {
 }
 
 .toggle-btn.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px);
+    transform: rotate(-45deg) translate(5px, -5px);
     background-color: #00ff99;
+}
+
+/* Overlay เมื่อ Sidebar เปิด */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease;
+    z-index: 900;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
 }
 
 /* เนื้อหาหลัก */
@@ -101,38 +125,30 @@ body {
     transition: margin-left 0.4s ease;
 }
 
-.container {
+/* ปรับปรุง Container ต่างๆ */
+.container, .paragon-container, .calculation-container {
     background-color: #2c2c2c;
-    border-radius: 12px;
-    padding: 40px;
-    width: 80%;
+    border-radius: 10px;
+    padding: 30px;
+    width: 100%;
     max-width: 600px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    text-align: center; /* จัดกึ่งกลางข้อความ */
-}
-
-/* สไตล์เฉพาะสำหรับหน้า Paragon Mode */
-.paragon-container {
-    background-color: #2c2c2c;
-    border-radius: 10px;
-    padding: 30px;
-    width: 400px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
 }
 
-.paragon-container h1 {
+.paragon-container h1, .calculation-container h1 {
     text-align: center;
     color: #00ff99;
     margin-bottom: 20px;
 }
 
-.paragon-container label {
+.paragon-container label, .calculation-container label {
     display: block;
     margin-bottom: 10px;
     font-weight: bold;
 }
 
-.paragon-container input {
+.paragon-container input, .calculation-container input {
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
@@ -143,12 +159,12 @@ body {
     font-size: 16px;
 }
 
-.paragon-container .button-group {
+.paragon-container .button-group, .calculation-container .button-group {
     display: flex;
     gap: 10px;
 }
 
-.paragon-container button {
+.paragon-container button, .calculation-container button {
     flex: 1;
     padding: 12px;
     background-color: #00ff99;
@@ -161,20 +177,20 @@ body {
     transition: background-color 0.3s;
 }
 
-.paragon-container button:hover {
+.paragon-container button:hover, .calculation-container button:hover {
     background-color: #00e68a;
 }
 
-.paragon-container .reset-button {
+.paragon-container .reset-button, .calculation-container .reset-button {
     background-color: #ff4d4d;
     color: #fff;
 }
 
-.paragon-container .reset-button:hover {
+.paragon-container .reset-button:hover, .calculation-container .reset-button:hover {
     background-color: #e60000;
 }
 
-.paragon-container .result {
+.paragon-container .result, .calculation-container .result {
     margin-top: 20px;
     background-color: #1e1e1e;
     padding: 20px;
@@ -182,132 +198,33 @@ body {
     color: #00ff99;
     font-size: 16px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-/* สไตล์เฉพาะสำหรับหน้า คำนวณเพชรและเวลา */
-.calculation-container {
-    background-color: #2c2c2c;
-    border-radius: 10px;
-    padding: 30px;
-    width: 400px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-.calculation-container h1 {
-    text-align: center;
-    color: #00ff99;
-    margin-bottom: 20px;
-}
-
-.calculation-container label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-.calculation-container input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #3d3d3d;
-    color: #ffffff;
-    font-size: 16px;
-}
-
-.calculation-container .button-group {
-    display: flex;
-    gap: 10px;
-}
-
-.calculation-container button {
-    flex: 1;
-    padding: 12px;
-    background-color: #00ff99;
-    border: none;
-    border-radius: 5px;
-    color: #000;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.calculation-container button:hover {
-    background-color: #00e68a;
-}
-
-.calculation-container .reset-button {
-    background-color: #ff4d4d;
-    color: #fff;
-}
-
-.calculation-container .reset-button:hover {
-    background-color: #e60000;
-}
-
-.calculation-container .result {
-    margin-top: 20px;
-    background-color: #1e1e1e;
-    padding: 20px;
-    border-radius: 10px;
-    color: #00ff99;
-    font-size: 16px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-/* ปรับแต่ง CSS สำหรับหน้าเว็บทั่วไป */
-body {
-    margin: 0;
-    font-family: 'Mitr', sans-serif;
-}
-
-/* Sidebar */
-.sidebar {
-    background-color: #2c2c2c;
-    width: 200px;
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    overflow-y: auto;
-    transform: translateX(-100%); /* ซ่อน Sidebar */
-    transition: transform 0.3s ease; /* Animation สำหรับ Sidebar */
-}
-
-.sidebar.active {
-    transform: translateX(0); /* แสดง Sidebar */
-}
-
-/* เนื้อหาหลัก */
-.main-content {
-    margin-left: 200px;
-    padding: 20px;
 }
 
 /* ปรับแต่งสำหรับหน้าจอมือถือ */
 @media (max-width: 768px) {
+    /* Sidebar ปรับให้เต็มหน้าจอความกว้าง 80% */
     .sidebar {
-        width: 100%;
-        height: auto;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        transform: translateY(100%); /* ซ่อน Sidebar */
+        width: 80%;
+        max-width: 300px;
+    }
+
+    /* ปรับปุ่ม Toggle ให้อยู่บนซ้ายสุด */
+    .toggle-btn {
+        left: 15px;
+        top: 15px;
+    }
+
+    /* เนื้อหาหลักไม่เปลี่ยน */
+    .main-content {
+        margin-left: 0;
+    }
+
+    /* ปรับ Sidebar ให้ Slide-In จากซ้ายบนมือถือ */
+    .sidebar {
+        transform: translateX(-100%); /* ซ่อน Sidebar */
     }
 
     .sidebar.active {
-        transform: translateY(0); /* แสดง Sidebar */
-    }
-
-    .main-content {
-        margin-left: 0; /* ย้ายเนื้อหาเมื่อ Sidebar เปิด */
+        transform: translateX(0); /* แสดง Sidebar */
     }
 }
