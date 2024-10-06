@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./tierlist.png">
+    <title>Tier List</title>
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ปุ่มสำหรับแสดง/ซ่อน Sidebar -->
+    <div class="toggle-btn" id="toggle-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <a href="index.html">หน้าหลัก</a>
+        <a href="calculate.html">ฟาร์ม AFK</a>
+        <a href="paragon.html">Paragon Mode</a>
+        <a href="about.html">เกี่ยวกับเรา</a>
+        <a href="tierlist.html">Tier List</a>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- เนื้อหาหลัก -->
+    <div class="main-content" id="main-content">
+        <div class="container">
+            <h2>Tier List 🎮✨</h2>
+            <div id="tierlist">
+                <div class="tier" id="SS"><h3>SS</h3></div>
+                <div class="tier" id="S"><h3>S</h3></div>
+                <div class="tier" id="A"><h3>A</h3></div>
+                <div class="tier" id="B"><h3>B</h3></div>
+                <div class="tier" id="C"><h3>C</h3></div>
+                <div class="tier" id="D"><h3>D</h3></div>
+            </div>
+            <input type="file" id="fileInput" accept="image/*">
+            <button id="addImageBtn">เพิ่มรูปภาพ</button>
+        </div>
+    </div>
+
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const addImageBtn = document.getElementById('addImageBtn');
+        const tierListDivs = document.querySelectorAll('.tier');
+
+        addImageBtn.addEventListener('click', () => {
+            const file = fileInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const img = document.createElement('img');
+                    img.src = event.target.result;
+                    img.alt = 'Tier Image';
+                    img.className = 'tier-image';
+
+                    // Choose a random tier to place the image
+                    const randomTierIndex = Math.floor(Math.random() * tierListDivs.length);
+                    tierListDivs[randomTierIndex].appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+
+</body>
+</html>

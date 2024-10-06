@@ -1,5 +1,3 @@
-/* styles.css */
-
 /* ฐานสำหรับหน้าเว็บทั้งหมด */
 body {
     font-family: 'Mitr', sans-serif;
@@ -227,4 +225,52 @@ body {
     .sidebar.active {
         transform: translateX(0); /* แสดง Sidebar */
     }
+}
+
+/* สไตล์สำหรับหน้า 404 */
+.error-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* ให้เต็มความสูงของหน้าจอ */
+    text-align: center; /* จัดข้อความให้อยู่กลาง */
+    background-color: #1e1e1e; /* พื้นหลังเหมือนหน้าเว็บหลัก */
+    color: #ffffff; /* ข้อความสีขาว */
+}
+
+.error-page h1 {
+    font-size: 3rem; /* ขนาดตัวอักษรใหญ่สำหรับหัวข้อ */
+    color: #ff4d4d; /* สีแดงสำหรับ 404 */
+}
+
+.error-page p {
+    font-size: 1.2rem; /* ขนาดตัวอักษรสำหรับข้อความ */
+    margin: 10px 0; /* ช่องว่างระหว่างพารากราฟ */
+}
+
+.error-page a {
+    color: #00ff99; /* สีเขียวสำหรับลิงก์ */
+    text-decoration: none; /* ไม่มีขีดเส้นใต้ */
+    margin-top: 20px; /* ช่องว่างด้านบน */
+    font-weight: bold; /* หนักตัวหนา */
+}
+
+.error-page a:hover {
+    text-decoration: underline; /* ขีดเส้นใต้เมื่อชี้ */
+}
+
+/* ปรับ CSS สำหรับลิงก์ในเนื้อหา */
+a {
+    color: #3498db; /* สีฟ้า */
+    text-decoration: none; /* ไม่มีขีดเส้นใต้ */
+    font-weight: bold; /* ทำให้ตัวหนา */
+    padding: 5px 10px; /* เพิ่มระยะห่างรอบ ๆ ลิงก์ */
+    border-radius: 5px; /* ทำให้มุมลิงก์มน */
+    transition: background-color 0.3s, color 0.3s; /* เพิ่มการเคลื่อนไหว */
+}
+
+a:hover {
+    background-color: #2980b9; /* สีพื้นหลังเมื่อ hover */
+    color: #ffffff; /* สีตัวอักษรเมื่อ hover */
 }
