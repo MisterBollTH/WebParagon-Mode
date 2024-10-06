@@ -1,3 +1,5 @@
+/* styles.css */
+
 /* ฐานสำหรับหน้าเว็บทั้งหมด */
 body {
     font-family: 'Mitr', sans-serif;
@@ -9,7 +11,6 @@ body {
     height: 100vh;
     flex-direction: column;
     overflow-x: hidden;
-    transition: all 0.4s ease; /* เพิ่ม transition สำหรับการเปลี่ยนหน้า */
 }
 
 /* Sidebar */
@@ -17,13 +18,14 @@ body {
     background-color: #2c2c2c;
     width: 250px;
     padding: 20px;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.7);
+    box-shadow: 2px 0 15px rgba(0, 0, 0, 0.5);
     position: fixed;
     left: -250px; /* ซ่อน Sidebar เริ่มต้น */
     top: 0;
     height: 100%;
-    transition: left 0.4s ease; /* เพิ่ม transition สำหรับ Sidebar */
+    transition: all 0.4s ease;
     z-index: 1000;
+    border-right: 2px solid #00ff99; /* เพิ่มขอบขวาสีเขียว */
 }
 
 .sidebar.active {
@@ -35,14 +37,15 @@ body {
     color: #ffffff;
     padding: 15px 20px;
     text-decoration: none;
-    border-bottom: 1px solid #444;
-    transition: background-color 0.3s, color 0.3s;
+    border-radius: 5px; /* เพิ่มความโค้งมนให้ลิงก์ */
+    transition: background-color 0.3s, color 0.3s, transform 0.2s; /* เพิ่มเอฟเฟกต์การเปลี่ยนแปลง */
     font-size: 1.1rem;
 }
 
 .sidebar a:hover {
-    background-color: #00ff99;
+    background-color: #00ff99; /* เปลี่ยนสีเมื่อชี้ */
     color: #000;
+    transform: scale(1.05); /* ขยายเล็กน้อยเมื่อชี้ */
 }
 
 /* ปุ่ม Toggle */
@@ -57,10 +60,11 @@ body {
     justify-content: space-between;
     cursor: pointer;
     z-index: 1001;
-    transition: left 0.4s ease; /* เพิ่ม transition สำหรับปุ่ม Toggle */
+    transition: left 0.4s ease;
 }
 
 .toggle-btn.active {
+    position: fixed;
     left: 270px; /* เลื่อนปุ่ม Toggle เมื่อ Sidebar เปิด */
 }
 
@@ -94,21 +98,7 @@ body {
     align-items: center;
     padding: 20px;
     margin-left: 0;
-    transition: margin-left 0.4s ease; /* เพิ่ม transition สำหรับเนื้อหา */
-}
-
-/* Animation สำหรับการเปลี่ยนหน้า */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-.page-transition {
-    animation: fadeIn 0.4s ease; /* ใช้ Animation สำหรับเนื้อหาที่เปลี่ยน */
+    transition: margin-left 0.4s ease;
 }
 
 .container {
@@ -295,22 +285,32 @@ body {
     border-bottom: 1px solid #444;
 }
 
-.sidebar a:hover {
-    background-color: #00ff99;
-    color: #000;
-}
-
 /* เนื้อหาหลัก */
 .main-content {
-    margin-left: 200px; /* ให้มีระยะห่างจาก Sidebar */
+    margin-left: 200px;
     padding: 20px;
-    transition: margin-left 0.3s ease;
 }
 
-.hidden {
-    display: none;
-}
+/* ปรับแต่งสำหรับหน้าจอมือถือ */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        transform: translateY(100%); /* ซ่อน Sidebar */
+    }
 
-.visible {
-    display: block;
+    .sidebar.active {
+        transform: translateY(0); /* แสดง Sidebar */
+    }
+
+    .main-content {
+        margin-left: 0; /* ย้ายเนื้อหาเมื่อ Sidebar เปิด */
+    }
 }
